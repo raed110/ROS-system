@@ -1,0 +1,41 @@
+sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
+Set up your keys sudo apt install curl  if you haven't already installed curl
+curl -s https://raw.githubusercontent.com/ros/rosdistro/master/ros.asc | sudo apt-key add –
+
+installation
+sudo apt update 
+Before you start the process,
+ choose the amount of software that you would like to install.
+ Desktop-full install: This package includes everything in the desktop,
+ including the 2D/3D simulator and perception packages.
+ In the base package, you'll find all the tools and libraries that you need to build and run applications.
+
+echo "source /opt/ros/noetic/setup.bash" >> ~/.bashrc 
+source ~/.bashrc
+
+for packages
+sudo apt install python3-rosdep python3-rosinstall python3-rosinstall-generator python3-wstool build-essential
+sudo apt install python3-rosdep
+sudo rosdep init
+rosdep update
+
+ros2 install
+
+locale  # check for UTF-8
+sudo apt update && sudo apt install locales
+sudo locale-gen en_US en_US.UTF-8
+sudo update-locale LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8
+export LANG=en_US.UTF-8
+locale  # verify settings
+sudo apt install software-properties-common
+sudo add-apt-repository universe
+sudo apt update && sudo apt install curl gnupg2 lsb-release
+
+sudo curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key  -o /usr/share/keyrings/ros-archive-keyring.gpg
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] http://packages.ros.org/ros2/ubuntu $(source /etc/os-release && echo $UBUNTU_CODENAME) main" | sudo tee /etc/apt/sources.list.d/ros2.list > /dev/null
+
+for ros2 packages
+sudo apt update
+sudo apt upgrade
+sudo apt install ros-foxy-desktop
+sudo apt install ros-foxy-ros-base
