@@ -1,2 +1,2 @@
 # ROS-system
-setup ROS system in LINKES
+setup ROS system in Ubuntu
